@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import requests
 
-
 API_URL = "https://api.openf1.org/v1"
 SESSION_KEY = 9689
 
@@ -73,7 +72,13 @@ def main():
     ax.set_ylabel("Speed (km/h)")
     ax.legend()
     ax.grid(alpha=0.25)
-
+    ax.axvspan(3200, 3450, color="grey", alpha=0.15)
+    ax.annotate(
+        "Speed traces diverge here",
+        xy=(3300, 260),
+        xytext=(2500, 190),
+        arrowprops={"arrowstyle": "->", "color": "#444444"},
+    )
     fig.savefig("mclaren_speed_comparison.png", dpi=300, bbox_inches="tight")
     print("Saved mclaren_speed_comparison.png")
     plt.show()
